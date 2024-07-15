@@ -1,9 +1,20 @@
 import React from "react";
 import asset_login from "../assets/icon1.png";
 
-function Login() {
+function FormLogin() {
   function loginProcess(event) {}
 
+  function loginProcess(event) {
+    event.preventDefault();
+    const loginName = event.target.name.value;
+    const loginPass = event.target.password.value;
+
+    if (loginName === "elfajrani12" && loginPass === "do_react") {
+      window.alert("Login Success");
+    } else {
+      window.alert("Please input the proper data");
+    }
+  }
   return (
     <div className="container">
       <div>
@@ -16,7 +27,13 @@ function Login() {
       <form onSubmit={loginProcess}>
         <div>
           <label htmlFor="login"></label>
-          <input className="fill" type="text" placeholder="Login" id="login" />
+          <input
+            className="fill"
+            type="text"
+            placeholder="Login"
+            id="login"
+            name="name"
+          />
         </div>
         <div>
           <label htmlFor="pass"></label>
@@ -25,6 +42,7 @@ function Login() {
             type="password"
             placeholder="Password"
             id="pass"
+            name="password"
           />
         </div>
         <div className="auth-forgot">
@@ -44,4 +62,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default FormLogin;
